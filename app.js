@@ -27,6 +27,18 @@
   document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
   window.matchMedia('(min-width: 801px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
 
+  const aboutMenu = $('#about-menu');
+  if (aboutMenu) {
+    aboutMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { aboutMenu.open = false; }));
+    document.addEventListener('click', event => { if (!aboutMenu.contains(event.target)) aboutMenu.open = false; });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && aboutMenu.open) {
+        aboutMenu.open = false;
+        aboutMenu.querySelector('summary').focus();
+      }
+    });
+  }
+
   const joinDialog = $('#join-dialog');
   const form = $('#join-form');
   const status = $('#form-status');

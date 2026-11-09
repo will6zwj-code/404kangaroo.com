@@ -13,6 +13,7 @@
   <meta property="og:image" content="https://404kangaroo.com/assets/logo11.png">
   <link rel="icon" href="assets/logo11.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pixels.css">
   <script src="site.config.js" defer></script>
   <script src="i18n.js" defer></script>
   <script src="app.js" defer></script>
@@ -22,7 +23,11 @@
   <header class="site-header" id="site-header">
     <a class="brand mono" href="#home" aria-label="404 Kangaroo Lab home" data-aria-zh="404 Kangaroo Lab 首页" data-aria-en="404 Kangaroo Lab home">404 KANGAROO LAB</a>
     <nav class="desktop-nav" aria-label="Main navigation" data-aria-zh="主导航" data-aria-en="Main navigation">
-      <a href="#about" data-zh="关于" data-en="About">About</a><a href="#join" data-zh="加入" data-en="Join us">Join us</a>
+      <details class="nav-dropdown" id="about-menu">
+        <summary><span data-zh="关于" data-en="About">About</span><span class="nav-chevron mono" aria-hidden="true">⌄</span></summary>
+        <div class="nav-dropdown-panel"><a href="#about" data-zh="关于实验室" data-en="About the lab">About the lab</a><a href="#support" data-zh="我们提供的支持" data-en="What we support">What we support</a><a href="#how" data-zh="如何协作" data-en="How it works">How it works</a></div>
+      </details>
+      <a class="nav-join" href="#join" data-zh="加入" data-en="Join us">Join us</a>
     </nav>
     <button class="language-toggle mono" type="button" aria-label="Switch to Chinese" data-aria-zh="切换到英文" data-aria-en="Switch to Chinese">中文</button>
     <button class="menu-toggle" type="button" aria-label="Open navigation" data-aria-zh="打开导航" data-aria-en="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button>
@@ -30,6 +35,8 @@
   </header>
   <main>
     <section class="hero container" id="home" aria-labelledby="hero-heading">
+      <div class="hero-pixels hero-pixels-left" aria-hidden="true"></div>
+      <div class="hero-pixels hero-pixels-right" aria-hidden="true"></div>
       <h1 class="mono" id="hero-heading">404 kangaroo Lab</h1>
       <figure class="hero-identity"><div class="logo-window"><img src="assets/logo11.png" alt="404 Kangaroo Lab kangaroo logo" width="887" height="1179" data-aria-zh="404 Kangaroo Lab 袋鼠标志" data-aria-en="404 Kangaroo Lab kangaroo logo"></div></figure>
       <a class="hero-join text-link" href="#join" data-zh="加入我们" data-en="Join us">Join us</a>
