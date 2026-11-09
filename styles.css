@@ -63,8 +63,8 @@ html[lang^='zh'] h2, html[lang^='zh'] h3 { letter-spacing: -.015em; font-weight:
 .hero-identity { margin-top: 34px; }
 .logo-window { width: 168px; height: 168px; overflow: hidden; margin-inline: auto; }
 .logo-window img { width: 168px; max-width: none; height: auto; }
-.hero-join { display: inline-flex; justify-content: center; align-items: center; gap: 24px; min-width: 184px; min-height: 56px; margin-top: 34px; padding: 15px 26px; border: 1px solid #111; border-radius: 2px; background: #111; color: #fff; font-size: 18px; font-weight: 400; line-height: 1.5; letter-spacing: .12em; transition: background .18s, transform .18s; }
-.hero-join:hover { background: #303030; transform: translateY(-2px); }
+.hero-join { display: inline-flex; justify-content: center; align-items: center; gap: 24px; min-width: 184px; min-height: 56px; margin-top: 34px; padding: 15px 26px; border: 1px solid #111; border-radius: 2px; background: transparent; color: #111; font-size: 18px; font-weight: 400; line-height: 1.5; letter-spacing: .12em; transition: background .18s, transform .18s; }
+.hero-join:hover { background: #f0f0f0; transform: translateY(-2px); }
 .hero-join:focus-visible { outline-offset: 6px; }
 html[lang^='zh'] .hero-join { font-weight: 400; }
 /* Information is organized around distinct, aligned modules. */
