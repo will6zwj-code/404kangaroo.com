@@ -1,12 +1,16 @@
 /* Mirrored edge texture; the central brand area stays clear at every width. */
 .hero { --pixel-clear-width: 800px; --pixel-edge: 32px; isolation: isolate; }
 .hero-pixels {
+  --pixel-tile-width: 220px;
+  /* The SVG is 286 × 416: its height is exactly 16/11 of its width. */
+  --pixel-tile-height: calc(var(--pixel-tile-width) * 16 / 11);
   position: absolute;
   top: 128px;
   bottom: 56px;
   width: max(0px, calc((100vw - var(--pixel-clear-width)) / 2 - var(--pixel-edge)));
   max-width: 240px;
-  background: url('assets/pixel-field.svg') left top / 220px auto repeat-y;
+  background: url('assets/pixel-field.svg') left top / var(--pixel-tile-width) var(--pixel-tile-height) repeat-y;
+  animation: pixel-field-rise 20s linear infinite;
   -webkit-mask-image: linear-gradient(to right, #000 0%, #000 65%, transparent 100%);
   mask-image: linear-gradient(to right, #000 0%, #000 65%, transparent 100%);
   opacity: .72;
@@ -17,15 +21,22 @@
 .hero-pixels::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, var(--paper), transparent 14%, transparent 82%, var(--paper)); }
 .hero-pixels-left { left: calc(50% - 50vw + var(--pixel-edge)); }
 .hero-pixels-right { right: calc(50% - 50vw + var(--pixel-edge)); transform: scaleX(-1); }
+@keyframes pixel-field-rise {
+  from { background-position: 0 0; }
+  to { background-position: 0 calc(0px - var(--pixel-tile-height)); }
+}
 @media (max-width: 1100px) {
   .hero { --pixel-clear-width: 650px; --pixel-edge: 24px; }
-  .hero-pixels { background-size: 160px auto; }
+  .hero-pixels { --pixel-tile-width: 160px; }
 }
 @media (max-width: 800px) {
   .hero { --pixel-clear-width: 550px; --pixel-edge: 16px; }
-  .hero-pixels { top: 110px; bottom: 40px; background-size: 130px auto; opacity: .55; }
+  .hero-pixels { --pixel-tile-width: 130px; top: 110px; bottom: 40px; opacity: .55; }
 }
 @media (max-width: 570px) {
   .hero { --pixel-clear-width: clamp(268px, 87vw, 440px); --pixel-edge: 8px; }
-  .hero-pixels { top: 108px; bottom: 30px; background-size: 90px auto; opacity: .38; }
+  .hero-pixels { --pixel-tile-width: 90px; top: 108px; bottom: 30px; opacity: .38; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-pixels { animation: none; background-position: 0 0; }
 }

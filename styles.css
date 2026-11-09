@@ -59,7 +59,10 @@ html[lang^='zh'] h2, html[lang^='zh'] h3 { letter-spacing: -.015em; font-weight:
 .mobile-nav a { display: block; padding: 17px 0; border-bottom: 1px solid var(--line); font-weight: 400; }
 /* The opening screen contains only the name, the mark, and an invitation. */
 .hero { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 740px; height: 92svh; padding: 140px 0 88px; text-align: center; }
-.hero #hero-heading { font-family: var(--font-en); font-size: 62px; font-weight: 400; line-height: 1.2; letter-spacing: 0; white-space: nowrap; }
+.hero #hero-heading { font-family: var(--font-en); font-size: 62px; font-weight: 400; line-height: 1.2; letter-spacing: 0; white-space: nowrap; width: 16ch; max-width: 100%; overflow: hidden; text-align: left; }
+.hero-title-track { display: flex; width: max-content; animation: hero-title-scroll 22s linear infinite; }
+.hero-title-copy { display: block; flex: 0 0 auto; padding-inline-end: 1ch; white-space: nowrap; }
+@keyframes hero-title-scroll { to { transform: translateX(-50%); } }
 .hero-identity { margin-top: 34px; }
 .logo-window { width: 168px; height: 168px; overflow: hidden; margin-inline: auto; }
 .logo-window img { width: 168px; max-width: none; height: auto; }
