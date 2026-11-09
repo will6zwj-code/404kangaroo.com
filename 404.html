@@ -1,1 +1,41 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>这里还没有发现袋鼠 — 404 Kangaroo Lab</title><style>*{box-sizing:border-box}body{margin:0;background:#f5f5ed;color:#18291e;font-family:Arial,"PingFang SC",sans-serif;min-height:100svh;display:grid;place-items:center;padding:32px}main{max-width:600px}small{letter-spacing:.14em}h1{font-size:clamp(90px,20vw,180px);line-height:1;margin:30px 0}h2{font-size:28px}p{line-height:1.8;color:#566254}a{display:inline-block;margin-top:20px;background:#18291e;color:#fff;padding:16px 24px;text-decoration:none}</style></head><body><main><small>404 KANGAROO LAB</small><h1>404</h1><h2>这里还没有发现袋鼠。</h2><p>这个页面可能已经迁移，或者还在探索中。<br>回到首页，找到你的下一步。</p><a href="/">回到首页 ↗</a></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#fafafa">
+  <title>Page unavailable — 404 Kangaroo Lab</title>
+  <style>
+    :root{--font-en:'Courier New',Courier,monospace;--font-zh:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif;color:#161616;background:#fafafa;font-family:var(--font-en),var(--font-zh);font-synthesis:none;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}body{margin:0;min-height:100svh;padding:38px 64px;display:flex;flex-direction:column}header{display:flex;justify-content:space-between;gap:24px;font-family:var(--font-en);font-size:11px;line-height:1.7}a{color:inherit;text-decoration:none}button{font:inherit;background:none;color:inherit;border:0;padding:0;cursor:pointer}main{width:min(100%,640px);margin:auto;padding:85px 0}h1,h2,p{margin:0;font-weight:400}h1{font-family:var(--font-en);font-size:clamp(96px,18vw,170px);line-height:1;letter-spacing:-.08em}h2{font-size:32px;line-height:1.6;margin-top:36px;letter-spacing:-.025em}p{font-size:20px;line-height:1.9;color:#777;max-width:540px;margin-top:19px}.home-link{display:inline-flex;gap:26px;border-bottom:1px solid #161616;font-size:18px;line-height:1.7;margin-top:30px;padding-bottom:5px}.home-link:hover{color:#777;border-color:#777}.arrow{font-family:var(--font-en)}footer{border-top:1px solid #d8d8d8;padding-top:22px;font-family:var(--font-en);font-size:9px;color:#888}html[lang=en] h2{font-size:25px;letter-spacing:-.04em}html[lang=en] p{font-size:13px;line-height:2}html[lang=en] .home-link{font-size:12px}:focus-visible{outline:1px solid #161616;outline-offset:5px}::selection{background:#161616;color:#fff}@media(max-width:600px){body{padding:27px 24px}main{padding-block:80px}header{font-size:10px}h2{font-size:27px;margin-top:29px}p{font-size:19px}html[lang=en] h2{font-size:22px}html[lang=en] p{font-size:12px}}
+  html[lang^=zh] body{font-family:var(--font-zh)}
+  </style>
+</head>
+<body>
+  <header><a class="home-destination" href="/">404 KANGAROO LAB</a><button id="language-toggle" type="button" aria-label="切换为中文">中文</button></header>
+  <main><h1 style="font-family:inherit;font-size:32px;line-height:1.6;letter-spacing:-.025em" data-zh="页面暂不可用" data-en="This page is unavailable">This page is unavailable</h1><p data-zh="页面地址可能已经更改。你可以返回首页继续浏览。" data-en="The page address may have changed. You can return to the homepage to keep browsing.">The page address may have changed. You can return to the homepage to keep browsing.</p><a class="home-link home-destination" href="/"><span data-zh="回到首页" data-en="Back to the lab">Back to the lab</span><span class="arrow" aria-hidden="true">↗</span></a></main>
+  <footer>© 2026 404 KANGAROO LAB</footer>
+  <script>
+    (() => {
+      let language = new URLSearchParams(location.search).get('lang') === 'zh' ? 'zh' : 'en';
+      const toggle = document.getElementById('language-toggle');
+      function apply(updateUrl) {
+        document.documentElement.lang = language === 'en' ? 'en' : 'zh-CN';
+        document.title = language === 'en' ? 'Page unavailable — 404 Kangaroo Lab' : '页面暂不可用 — 404 Kangaroo Lab';
+        document.querySelectorAll('[data-zh][data-en]').forEach(el => { el.textContent = el.dataset[language]; });
+        document.querySelectorAll('.home-destination').forEach(el => { el.href = language === 'zh' ? '/?lang=zh' : '/'; });
+        toggle.textContent = language === 'en' ? '中文' : 'EN';
+        toggle.setAttribute('aria-label', language === 'en' ? '切换为中文' : 'Switch to English');
+        toggle.lang = language === 'en' ? 'zh-CN' : 'en';
+        if (updateUrl) {
+          const url = new URL(location.href);
+          if (language === 'zh') url.searchParams.set('lang', 'zh'); else url.searchParams.delete('lang');
+          history.replaceState(null, '', url.pathname + url.search + url.hash);
+        }
+      }
+      toggle.addEventListener('click', () => { language = language === 'en' ? 'zh' : 'en'; apply(true); });
+      apply(false);
+    })();
+  </script>
+</body>
+</html>
